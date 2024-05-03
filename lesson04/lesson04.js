@@ -1,22 +1,16 @@
-let titleProject = 'Лендинг';
-let screensValue = 'шаблонные, с уникальным дизайном, с анимациями';
 let screenPrice = 10000;
 let percentage = 15;
-let responsive = true;
 
-let currentTitleProject = prompt("Название проекта?");
-titleProject = currentTitleProject;
+let titleProject = prompt("Название проекта?");
 
 console.log(titleProject);
 
-let currentScreensValue = prompt("Какие типы экранов?");
-screensValue = currentScreensValue;
+let screensValue = prompt("Какие типы экранов?");
 
 console.log(screensValue);
 
-let currentResponsive = prompt("Сайт респонсивный?");
-currentResponsive = currentResponsive.toLowerCase() === 'да';
-responsive = currentResponsive;
+let responsive = prompt("Сайт респонсивный?");
+responsive = responsive.toLowerCase() === 'да';
 
 console.log(responsive);
 
@@ -47,4 +41,6 @@ if (servicePercentPrice > 50000) {
     console.log('Сделаем скидку 5%');
 } else if (servicePercentPrice === 50000) {
     console.log('Сделаем скидку в 10%');
+} else {
+    console.log('Скидка не предусмотрена');
 };
