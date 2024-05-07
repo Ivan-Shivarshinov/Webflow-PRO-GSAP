@@ -39,6 +39,7 @@ function getScreenPrice() {
     while (checkIsNumber(screenPrice) || screenPrice !== null || screenPrice = screenPrice.trim()) {
         screenPrice = +prompt("Сколько стоит экран?");
     }
+    console.log(screenPrice, 'Цена экрана');
     return screenPrice;
 }
 
@@ -72,7 +73,7 @@ const getAllServicePrices = function() {
 let allServicePrices = getAllServicePrices();
 
 function getFullPrice() {
-    let fullPrice = screenPrice + +servicePrice1 + +servicePrice2;
+    let fullPrice = screenPrice + allServicePrices;
     console.log(fullPrice, 'Полная стоимость проекта');
     return fullPrice;
 }
