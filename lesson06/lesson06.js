@@ -1,4 +1,3 @@
-let screenPrice = 10000;
 let percentage = 15;
 
 function getTitle() {
@@ -13,22 +12,63 @@ let titleProject = getTitle();
 let screensValue = prompt("Какие типы экранов?");
 console.log(screensValue, 'Типы экранов');
 
+// простая функция проверки, является ли value числом или нет
+function IsNumber(value) {
+    const result = typeof value === 'number';
+    console.log(result);
+  return result;
+}
+
+// IsNumber(5); // true
+// IsNumber('5'); // false
+
+// функция, которая: 
+// - переводит строку в число
+// - проверяет, является ли полученное число конечным и не равным NaN
+function checkIsNumber(value) {
+    const parseNumber = parseFloat(value);
+    const result = !isNaN(parseNumber) && isFinite(parseNumber);
+    console.log(result);
+   return result;
+  }
+
+// checkIsNumber('5'); // true
+// checkIsNumber('five'); // false
+
+function getScreenPrice() {
+    while (checkIsNumber(screenPrice) || screenPrice !== null || screenPrice = screenPrice.trim()) {
+        screenPrice = +prompt("Сколько стоит экран?");
+    }
+    return screenPrice;
+}
+
+let screenPrice = getScreenPrice();
+
 let responsive = prompt("Сайт респонсивный?");
 responsive = responsive.toLowerCase() === 'да';
 console.log(responsive, 'Сайт респонсивный: да/нет?');
 
-let service1 = prompt("Какой сервис нужен?");
-let servicePrice1 = prompt("Сколько это будет стоить?");
-
-let service2 = prompt("Какой еще сервис тебе нужен?");
-let servicePrice2 = prompt("Сколько будет стоить этот второй сервис?");
-
-let getAllServicePrices = function () {
-    let allServicePrices = +servicePrice1 + +servicePrice2;
+const getAllServicePrices = function() {
+    let sum = 0;
+    for (let i = 0; i < 2; i++) {
+      let service = prompt(`Какой сервис нужен?`);
+      let isValid = false;
+      let servicePrice;
+      while (!isValid) {
+        servicePrice = prompt(`Сколько будет стоить ${service}?`);
+        if (checkIsNumber(servicePrice)) {
+          isValid = true;
+        } else {
+          alert('Введите число!');
+        }
+      }
+      sum += +servicePrice;
+    }
+    let allServicePrices = sum;
     console.log(allServicePrices, 'Стоимость всех сервисов');
     return allServicePrices;
-}
-
+  }
+ 
 let allServicePrices = getAllServicePrices();
 
 function getFullPrice() {
