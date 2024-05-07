@@ -3,14 +3,14 @@ let percentage = 15;
 function getTitle() {
     let titleProject = prompt("Название проекта?").toLowerCase();
     titleProject = titleProject.charAt(0).toUpperCase() + titleProject.slice(1);
-    console.log(titleProject, 'Название проекта');
+    console.log(titleProject, '- Название проекта');
     return titleProject;
 }
 
 let titleProject = getTitle();
 
 let screensValue = prompt("Какие типы экранов?");
-console.log(screensValue, 'Типы экранов');
+console.log(screensValue, '- Типы экранов');
 
 // простая функция проверки, является ли value числом или нет
 function IsNumber(value) {
@@ -18,9 +18,6 @@ function IsNumber(value) {
     console.log(result);
   return result;
 }
-
-// IsNumber(5); // true
-// IsNumber('5'); // false
 
 // функция, которая: 
 // - переводит строку в число
@@ -32,22 +29,20 @@ function checkIsNumber(value) {
    return result;
   }
 
-// checkIsNumber('5'); // true
-// checkIsNumber('five'); // false
-
 function getScreenPrice() {
-    while (checkIsNumber(screenPrice) || screenPrice !== null || screenPrice = screenPrice.trim()) {
-        screenPrice = +prompt("Сколько стоит экран?");
+    let screenPrice;
+    while (!checkIsNumber(screenPrice) || screenPrice === null || screenPrice.trim() !== String(screenPrice)) {
+        screenPrice = prompt("Сколько стоит экран?");
     }
     console.log(screenPrice, 'Цена экрана');
-    return screenPrice;
+    return +screenPrice;
 }
 
 let screenPrice = getScreenPrice();
 
 let responsive = prompt("Сайт респонсивный?");
 responsive = responsive.toLowerCase() === 'да';
-console.log(responsive, 'Сайт респонсивный: да/нет?');
+console.log(responsive, 'Сайт респонсивный - да/нет?');
 
 const getAllServicePrices = function() {
     let sum = 0;
@@ -56,7 +51,7 @@ const getAllServicePrices = function() {
       let isValid = false;
       let servicePrice;
       while (!isValid) {
-        servicePrice = prompt(`Сколько будет стоить ${service}?`);
+        servicePrice = prompt(`Сколько будет стоить "${service}"?`);
         if (checkIsNumber(servicePrice)) {
           isValid = true;
         } else {
@@ -89,22 +84,22 @@ function getServicePercentPrices() {
 let servicePercentPrice = getServicePercentPrices();
 
 function getRollbackMessage() {
-    if (servicePercentPrice > 50000) {
+    if (fullPrice > 50000) {
         console.log('Сделаем скидку в 10%');
-    } else if (servicePercentPrice > 20000 && fullPrice < 50000) {
+    } else if (fullPrice > 20000 && fullPrice < 50000) {
         console.log('Сделаем скидку 5%');
-    } else if (servicePercentPrice >= 0 && fullPrice < 20000) {
+    } else if (fullPrice < 20000 && fullPrice > 0) {
         console.log('Скидка не предусмотрена');
-    } else if (servicePercentPrice < 0) {
-        console.log('Что то пошло не так');
-    } else if (servicePercentPrice === 0) {
+    } else if (fullPrice < 0) {
+        console.log('Что-то пошло не так');
+    } else if (fullPrice === 0) {
         console.log('Скидка не предусмотрена');
-    } else if (servicePercentPrice === 20000) {
+    } else if (fullPrice === 20000) {
         console.log('Сделаем скидку 5%');
-    } else if (servicePercentPrice === 50000) {
+    } else if (fullPrice === 50000) {
         console.log('Сделаем скидку в 10%');
     } else {
-        console.log('Скидка не предусмотрена');
+        console.log('Возникла непредвиденная ошибка');
     }
 }
 
