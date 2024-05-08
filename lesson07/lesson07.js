@@ -1,3 +1,12 @@
+function randomGenerate(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+  
+function checkIsNumber(value) {
+    const parsedValue = parseFloat(value);
+    return !isNaN(parsedValue) && isFinite(parsedValue) && value.trim() === parsedValue.toString();
+};
+
 const gameBotFunction = function () {
     alert('Привет! Я хочу сыграть с тобой в игру ;)\nЯ загадаю любое число от 1 до 100, а ты должен угадать - всё просто!');
   
@@ -19,7 +28,7 @@ const gameBotFunction = function () {
             return;
         }
   
-        if (userNumber === mysteryNumber) {
+        if (userNumber == mysteryNumber) {
             alert(`Поздравляю! Ты угадал моё число - ${mysteryNumber}!`);
 
             const playAgain = confirm('Хочешь сыграть еще раз?');
@@ -31,7 +40,10 @@ const gameBotFunction = function () {
             } else {
                 alert('Спасибо за игру! :)');
             }
-        } else if (userNumber < mysteryNumber) {
+            return;
+        }
+        
+        if (userNumber < mysteryNumber) {
             attempts--;
             alert(`Моё число больше :з\nОсталось попыток - "${attempts}"`);
         } else {
@@ -58,14 +70,5 @@ const gameBotFunction = function () {
   
     getResult();
 };
-  
+
 gameBotFunction();
-  
-function randomGenerate(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-  
-function checkIsNumber(value) {
-    const parsedValue = parseFloat(value);
-    return !isNaN(parsedValue) && isFinite(parsedValue) && value.trim() === parsedValue.toString();
-};
