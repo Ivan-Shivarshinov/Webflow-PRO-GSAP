@@ -1,5 +1,14 @@
 let percentage = 15;
 
+let titleProject = getTitle();
+let screensValue = getScreensValue();
+let isResponsive = getResponsiveStatus();
+let screenPrice = getScreenPrice();
+let allServicePrices = getAllServicePrices();
+let fullPrice = getFullPrice();
+let servicePercentPrice = getServicePercentPrices();
+let isDiscount = getRollbackMessage();
+
 function getTitle() {
     let titleProject = prompt("Название проекта?").toLowerCase();
     titleProject = titleProject.charAt(0).toUpperCase() + titleProject.slice(1);
@@ -7,44 +16,33 @@ function getTitle() {
     return titleProject;
 }
 
-let titleProject = getTitle();
-
-let screensValue = prompt("Какие типы экранов?");
-console.log(screensValue, '- Типы экранов');
-
-// простая функция проверки, является ли value числом или нет
-function IsNumber(value) {
-    const result = typeof value === 'number';
-    console.log(result);
-  return result;
+function checkIsNumber(value) {
+    return !isNaN(parseFloat(value)) && isFinite(value);
 }
 
-// функция, которая: 
-// - переводит строку в число
-// - проверяет, является ли полученное число конечным и не равным NaN
-function checkIsNumber(value) {
-    const parseNumber = parseFloat(value);
-    const result = !isNaN(parseNumber) && isFinite(parseNumber);
-    console.log(result);
-   return result;
-  }
-
-function getScreenPrice() {
+ function getScreenPrice() {
     let screenPrice;
-    while (!checkIsNumber(screenPrice) || screenPrice === null || screenPrice.trim() !== String(screenPrice)) {
+    while (!checkIsNumber(screenPrice) || screenPrice.trim() === '' || screenPrice === null) {
         screenPrice = prompt("Сколько стоит экран?");
     }
-    console.log(screenPrice, 'Цена экрана');
+    console.log(screenPrice, '- Цена экрана');
     return +screenPrice;
 }
 
-let screenPrice = getScreenPrice();
+function getResponsiveStatus() {
+    let responsive = prompt("Сайт респонсивный?");
+    responsive = responsive.toLowerCase() === 'да';
+    console.log(responsive, 'Сайт респонсивный - да/нет?');
+    return responsive;
+}
 
-let responsive = prompt("Сайт респонсивный?");
-responsive = responsive.toLowerCase() === 'да';
-console.log(responsive, 'Сайт респонсивный - да/нет?');
+function getScreensValue() {
+  let screensValue = prompt("Какие типы экранов?");
+  console.log(screensValue, '- Типы экранов');
+  return screensValue;
+}
 
-const getAllServicePrices = function() {
+function getAllServicePrices() {
     let sum = 0;
     for (let i = 0; i < 2; i++) {
       let service = prompt(`Какой сервис нужен?`);
@@ -58,14 +56,12 @@ const getAllServicePrices = function() {
           alert('Введите число!');
         }
       }
-      sum += servicePrice;
+      sum += +servicePrice;
     }
     let allServicePrices = sum;
     console.log(allServicePrices, 'Стоимость всех сервисов');
     return allServicePrices;
-  }
- 
-let allServicePrices = getAllServicePrices();
+}
 
 function getFullPrice() {
     let fullPrice = screenPrice + allServicePrices;
@@ -73,15 +69,11 @@ function getFullPrice() {
     return fullPrice;
 }
 
-let fullPrice = getFullPrice();
-
 function getServicePercentPrices() {
     let servicePercentPrice = Math.floor(fullPrice * (100 - percentage) / 100);
     console.log(servicePercentPrice, 'Стоимость за вычетом процента');
     return servicePercentPrice;
 }
-
-let servicePercentPrice = getServicePercentPrices();
 
 function getRollbackMessage() {
     if (fullPrice > 50000) {
@@ -102,5 +94,3 @@ function getRollbackMessage() {
         console.log('Возникла непредвиденная ошибка');
     }
 }
-
-getRollbackMessage();
