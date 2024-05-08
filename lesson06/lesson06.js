@@ -1,14 +1,5 @@
 let percentage = 15;
 
-let titleProject = getTitle();
-let screensValue = getScreensValue();
-let isResponsive = getResponsiveStatus();
-let screenPrice = getScreenPrice();
-let allServicePrices = getAllServicePrices();
-let fullPrice = getFullPrice();
-let servicePercentPrice = getServicePercentPrices();
-let isDiscount = getRollbackMessage();
-
 function getTitle() {
     let titleProject = prompt("Название проекта?").toLowerCase();
     titleProject = titleProject.charAt(0).toUpperCase() + titleProject.slice(1);
@@ -94,3 +85,12 @@ function getRollbackMessage() {
         console.log('Возникла непредвиденная ошибка');
     }
 };
+
+let titleProject = getTitle();
+let screensValue = getScreensValue();
+let isResponsive = getResponsiveStatus();
+let screenPrice = getScreenPrice();
+let allServicePrices = getAllServicePrices();
+let fullPrice = getFullPrice();
+let servicePercentPrice = getServicePercentPrices();
+let isDiscount = getRollbackMessage();

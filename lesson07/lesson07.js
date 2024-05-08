@@ -36,7 +36,7 @@ const gameBotFunction = function () {
             alert(`Моё число больше :з\nОсталось попыток - "${attempts}"`);
         } else {
             attempts--;
-            alert(`Моё число больше :з\nОсталось попыток - "${attempts}"`);
+            alert(`Моё число меньше :з\nОсталось попыток - "${attempts}"`);
         }
   
         if (attempts > 0) {
