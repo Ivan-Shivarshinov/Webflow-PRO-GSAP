@@ -63,9 +63,9 @@ gameBotFunction();
   
 function randomGenerate(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
   
 function checkIsNumber(value) {
     const parsedValue = parseFloat(value);
     return !isNaN(parsedValue) && isFinite(parsedValue) && value.trim() === parsedValue.toString();
-}
+};
