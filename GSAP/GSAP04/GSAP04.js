@@ -14,20 +14,16 @@ tl.to('.box.first', {
     autoAlpha: autoAlpha,
     stagger: {
         amount: amount,
-        grid: 'auto', 
         from: 'edges',
-        axis: 'x'
     }
-}, position);
+});
 tl.to('.box.second', {
     scale: scale,
     backgroundColor: 'white',
     autoAlpha: autoAlpha,
     stagger: {
         amount: amount,
-        grid: 'auto', 
-        from: 'center',
-        axis: 'x'
+        from: 'edges',
     }
 }, position);
 tl.to('.box.third', {
@@ -36,9 +32,7 @@ tl.to('.box.third', {
     autoAlpha: autoAlpha,
     stagger: {
         amount: amount,
-        grid: 'auto', 
         from: 'edges',
-        axis: 'x'
     }
 }, position);
 tl.to('.box.fourth', {
@@ -47,8 +41,6 @@ tl.to('.box.fourth', {
     autoAlpha: autoAlpha,
     stagger: {
         amount: amount,
-        grid: 'auto', 
-        from: 'center',
-        axis: 'x'
+        from: 'edges',
     }
 }, position);
