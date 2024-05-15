@@ -17,20 +17,20 @@ document.querySelectorAll(".box").forEach(box => {
                             backgroundColor: "white",
                             scale: 0.75,
                             stagger: {
-                            		amount: 0.5,
-                            		from: "random",
-                            		grid: "auto",
-                            		ease: "power3.inOut"
+                            	amount: 0.5,
+                            	from: "random",
+                            	grid: "auto",
+                            	ease: "power3.inOut"
                             },
                             onComplete: () => {
                                 gsap.to(otherBoxes, {
                                     autoAlpha: 0,
                                     scale: 1.25,
                                     stagger: {
-                                    		amount: 0.5,
-                                    		from: "random",
-                                    		grid: "auto",
-                                    		ease: "power3.inOut"
+                                    	amount: 0.5,
+                                    	from: "random",
+                                    	grid: "auto",
+                                    	ease: "power3.inOut"
                                     },
                                     onComplete: () => {
                                         setTimeout(() => {
