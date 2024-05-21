@@ -2,26 +2,32 @@ const duration = 1;
 const ease = "power2.inOut";
 const autoAlpha = 0;
 
-gsap.from("#hero-logo", { 
+const tl = gsap.timeline();
+
+tl.from(".page_wrapper", { 
     duration: duration,
     autoAlpha: autoAlpha,
-    stagger: .75,
-    ease: ease
+    ease: "none"
 });
 
-gsap.from("#hero-text", { 
+tl.from("#hero-logo", { 
+    duration: duration,
+    autoAlpha: autoAlpha,
+    stagger: .5,
+    ease: ease
+})
+.from("#hero-text", { 
     duration: duration,
     autoAlpha: autoAlpha,
     x: 100,
     ease: ease
-});
-
-gsap.from("#hero-btn", { 
+}, "<")
+.from("#hero-btn", { 
     duration: duration, 
     autoAlpha: autoAlpha, 
     x: -100, 
     ease: ease 
-});
+}, "<");
 
 gsap.utils.toArray("#scroll-element").forEach(elem => {
     gsap.from(elem, {
