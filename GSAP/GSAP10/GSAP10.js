@@ -1,8 +1,8 @@
 //section 1
 let tl = gsap.timeline({
-    delay: 0.5,
+    delay: 0.25,
     defaults: {
-        duration: 1,
+        duration: 0.75,
         ease: "power2.inOut"
     }
 });
@@ -65,45 +65,17 @@ sectionSecond
     .from('.scroll_text.is-left', { 
         autoAlpha: 0, 
         x: '-50vw',
-        ease: 'power2.inOut',
-        duration: 1
-    })
+        ease: 'power2.inOut'
+    }, "<")
     .from('.scroll_text.is-right', { 
         autoAlpha: 0, 
         x: '50vw',
-        ease: 'power2.inOut',
-        duration: 1
+        ease: 'power2.inOut'
     }, "<")
     .to('.section.is-second', { backgroundColor: 'white' })
     .to('.scroll_text.is-left', { color: 'black' }, "<")
     .to('.scroll_text.is-right', { color: 'black' }, "<")
     .to('.grid-cell', { backgroundColor: 'white' }, "<")
-
-const playButton = document.getElementById('play');
-const reverseButton = document.getElementById('reverse');
-tl = gsap.timeline({
-    paused: true,
-    repeat: -1,
-    yoyo: true
-});
-
-gsap.utils.toArray('.box').forEach((box, i) => {
-    tl.to(box, {
-        duration: 1,
-        rotation: 720,
-        scale: 1.1,
-        backgroundColor: 'white',
-        ease: "power3.inOut",
-    }, i * 0.1);
-});
-
-playButton.addEventListener('click', () => {
-    tl.play();
-});
-
-reverseButton.addEventListener('click', () => {
-    tl.reverse();
-});
 
 //section 3
 const scale = 1.1;
@@ -115,6 +87,7 @@ const play = document.getElementById('play')
 const reverse = document.getElementById('reverse')
 const pause = document.getElementById('pause')
 const resume = document.getElementById('resume')
+const restart = document.getElementById('restart')
 const timeScaleBase = document.getElementById('timescale1')
 const timeScaleFast = document.getElementById('timescale2')
 tl = gsap.timeline({
@@ -135,11 +108,12 @@ pause.addEventListener('click', () => {
 resume.addEventListener('click', () => {
     tl.resume();
 });
-
+restart.addEventListener('click', () => {
+    tl.restart();
+});
 timeScaleBase.addEventListener('click', () => {
     tl.timeScale(1);
 });
-
 timeScaleFast.addEventListener('click', () => {
     tl.timeScale(2);
 });
