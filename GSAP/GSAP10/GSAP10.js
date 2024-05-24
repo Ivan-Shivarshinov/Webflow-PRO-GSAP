@@ -11,7 +11,7 @@ tl.from('.heading_text', {
     autoAlpha: 0,
     y: 50,
 })
-    .to('.paragraph.is-clue', { text: "ПОТЯНИ ВВЕРХ ЗА ИКОНКУ ↓" })
+    .to('.paragraph.is-clue', { text: "↓ ПОТЯНИ ВВЕРХ ЗА ИКОНКУ ↓" })
     .to('.paragraph.is-clue', {
         duration: 0.5,
         fontSize: '50px',
@@ -76,6 +76,7 @@ sectionSecond
     .to('.scroll_text.is-left', { color: 'black' }, "<")
     .to('.scroll_text.is-right', { color: 'black' }, "<")
     .to('.grid-cell', { backgroundColor: 'white' }, "<")
+    .fromTo('.animation_wrapper', { scale: 0.8 }, { scale: 1}, "<")
 
 //section 3
 const scale = 1.1;
