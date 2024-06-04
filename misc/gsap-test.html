@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Animation Example</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script>
+        const box = document.getElementById('box');
+        function animateBox() {
+            gsap.timeline()
+                .to("#box", {
+                    duration: 2,
+                    x: window.innerWidth - 100,
+                    backgroundColor: "blue",
+                    autoAlpha: 0,
+                    onComplete: resetBox
+                });
+        }
+        function resetBox() {
+            gsap.to("#box", {
+                duration: 0,
+                x: 0,
+                autoAlpha: 1,
+                backgroundColor: "red",
+                delay: 1
+            });
+        }
+        box.addEventListener('click', animateBox);
+    </script>
+</body>
+</html>

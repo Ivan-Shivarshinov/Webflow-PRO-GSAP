@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #282c34;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 10px;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: #61dafb;
+    cursor: pointer;
+}
