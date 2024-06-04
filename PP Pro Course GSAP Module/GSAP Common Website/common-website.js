@@ -175,15 +175,60 @@ animationProjectsSection
     duration: duration,
     stagger: 0.1,
     ease: ease
-}, 0.5)
+}, 0.3)
+.from('.projects_item-wrapper', { autoAlpha: 0, y: '10rem', stagger: 0.3, duration: duration, ease: ease}, 0.6);
 
 let gorizontalScrollAnimation = gsap.to(projectContainer, {
     x: () => window.innerWidth - projectContainer.scrollWidth,
     scrollTrigger: {
-    trigger: sectionProjects,
-    pin: true,
-    scrub: true,
-    start: 'top top',
-    end: () => '+=' + (projectContainer.scrollWidth - window.innerWidth)
+        trigger: sectionProjects,
+        pin: true,
+        scrub: true,
+        start: 'top top',
+        end: () => '+=' + (projectContainer.scrollWidth - sectionProjects.offsetWidth)
     }
 });
+
+//Шестая секция
+const awardItems = document.querySelectorAll('.awards_items-grid');
+const awardSection = document.querySelector('.section.is-awards');
+const splitTypeAwards = new SplitType('#awards-h3')
+
+let animationAwardSection = gsap.timeline({
+    scrollTrigger: {
+        trigger: awardSection,
+        start: 'top 90%'
+    }
+});
+
+animationAwardSection
+.from(splitTypeAwards.chars, {
+    autoAlpha: 0,
+    x: '5rem',
+    filter: 'blur(0.3rem)',
+    duration: duration,
+    stagger: 0.1,
+    ease: ease
+})
+.from(awardItems, { autoAlpha: 0, y: '5rem', filter: 'blur(0.3rem)', stagger: 0.1, duration: duration, ease: ease}, 0.75);
+
+awardItems.forEach(item => {
+    const awardImage = item.querySelector('.awards_image');
+    let awardImageAnimation = gsap.from(awardImage, {
+        autoAlpha: 0,
+        x: '10rem',
+        filter: 'blur(0.3rem)',
+        duration: 1,
+        ease: 'back.out(2)',
+        paused: true
+    })
+    item.addEventListener('mouseenter', () => {
+        awardImageAnimation.play();
+    })
+    item.addEventListener('mouseleave', () => {
+        awardImageAnimation.reverse();
+    })
+});
+
+//Седьмая секция
+
