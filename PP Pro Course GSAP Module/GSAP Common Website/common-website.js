@@ -491,6 +491,8 @@ mm.add("(min-width: 376px)", () => {
 //Моб версия
 mm.add("(max-width: 375px)", () => {
     //Первая секция
+    const splitTypeHero = new SplitType('#h3-hero-split')
+
     let animationHeroSection = gsap.timeline({
         delay: 0.3
     });
@@ -528,10 +530,11 @@ mm.add("(max-width: 375px)", () => {
             duration: duration,
             ease: ease
         }, 1.3)
-        .from('#h3-hero-split', {
+        .from(splitTypeHero.lines, {
             autoAlpha: 0,
-            y: '-5rem',
+            x: '5rem',
             filter: 'blur(0.3rem)',
+            stagger: 0.1,
             duration: duration,
             ease: ease
         }, 2)
@@ -566,19 +569,131 @@ mm.add("(max-width: 375px)", () => {
             filter: 'blur(0rem)',
             duration: duration,
             ease: ease
-        }),
-        onEnterBack: batch => gsap.to(batch, {
+        })
+    })
+
+    //Третья секция
+    gsap.set('#about-h5', {
+        autoAlpha: 0,
+        x: '10rem',
+        filter: 'blur(0.3rem)'
+    })
+
+    ScrollTrigger.batch('#about-h5', {
+        onEnter: batch => gsap.to(batch, {
             autoAlpha: 1,
             x: '0rem',
-            stagger: 0.1,
             filter: 'blur(0rem)',
             duration: duration,
             ease: ease
-        }),
-        onLeave: batch => gsap.to(batch, {
-            autoAlpha: 0,
-            x: '10rem',
-            filter: 'blur(0.3rem)'
         })
     })
+
+    gsap.set('.about_h4-wrapper', {
+        autoAlpha: 0,
+        y: '5rem',
+        filter: 'blur(0.3rem)'
+    })
+
+    ScrollTrigger.batch('.about_h4-wrapper', {
+        onEnter: batch => gsap.to(batch, {
+            autoAlpha: 1,
+            y: '0rem',
+            filter: 'blur(0rem)',
+            duration: duration,
+            ease: ease
+        })
+    })
+
+    gsap.from('.about_row', {
+        scrollTrigger: {
+            trigger: '.about_rows-wrapper',
+            start: 'top bottom',
+        },
+        autoAlpha: 0,
+        y: '5rem',
+        filter: 'blur(0.3rem)',
+        stagger: 0.2,
+        duration: duration,
+        ease: ease
+    })
+
+    gsap.from('.about_image', {
+        scrollTrigger: {
+            trigger: '.about_image-grid',
+            start: 'top bottom',
+        },
+        autoAlpha: 0,
+        width: '0%',
+        filter: 'blur(0.3rem)',
+        stagger: 0.3,
+        duration: duration,
+        ease: ease
+    })
+
+    //Четвертая секция
+    const dropdown = document.querySelectorAll('.dropdown');
+    const splitTypeDropdown = new SplitType('#body-dropdown-split')
+
+    let animationDropdownSection = gsap.timeline({
+        scrollTrigger: {
+            trigger: '#dropdown-h5',
+            start: 'top bottom',
+        }
+    })
+
+    animationDropdownSection
+        .from('#dropdown-h5', {
+            autoAlpha: 0,
+            x: '10rem',
+            filter: 'blur(0.3rem)',
+            duration: duration,
+            ease: ease
+        })
+        .from(splitTypeDropdown.lines, {
+            autoAlpha: 0,
+            x: '10rem',
+            filter: 'blur(0.3rem)',
+            stagger: 0.1,
+            duration: duration,
+            ease: ease
+        }, '<0.3')
+        .from('.cms_wrapper', {
+            autoAlpha: 0,
+            y: '5rem',
+            filter: 'blur(0.3rem)',
+            duration: duration,
+            ease: ease
+        }, '<0.6')
+
+    gsap.set('.dropdown_list', { autoAlpha: 0, height: 0, filter: 'blur(0.3rem)', });
+
+    dropdown.forEach(item => {
+        let dropdownList = item.querySelector('.dropdown_list');
+        let dropdownToggle = item.querySelector('.dropdown_toggle');
+
+        let dropdownAnimation = gsap.timeline({
+            paused: true
+        });
+
+        dropdownAnimation
+            .to(dropdownToggle, { color: '#51b613' })
+            .to(dropdownList, {
+                height: 'auto',
+                autoAlpha: 1,
+                filter: 'blur(0rem)',
+                marginTop: '1rem',
+                duration: 0.75,
+                ease: ease
+            }, '<')
+
+        dropdownAnimation.reverse();
+
+        item.addEventListener('click', () => {
+            dropdownAnimation.reversed(!dropdownAnimation.reversed());
+        })
+    })
+
+    //Четвёртая секция
+
 });
