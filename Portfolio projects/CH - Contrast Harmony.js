@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const duration = 1.5
   const ease = "power4.inOut"
 
-  gsap.set(".page-wrapper", { autoAlpha: 0 }) 
+  gsap.set(".page-wrapper", { autoAlpha: 0 })
 
   gsap.to(".page-wrapper", {
     autoAlpha: 1,
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   })
 
   let splitHeading = new SplitText("[split-type]", { type: "chars" })
-  
+
   let getHeroSectionAnimation = gsap.timeline({
     scrollTrigger: {
       trigger: ".section_hero",
@@ -36,13 +36,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
         stagger: 0.1,
         duration,
         ease,
-        autoAlpha: 0, 
+        autoAlpha: 0,
       },
       "<+=0.5"
     )
     .from(
       splitHeading.chars,
-      { 
+      {
         duration: 0.3,
         ease,
         y: 50,
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       ease,
       duration: 0.5,
     })
-  
+
   let stickyVideoSection = gsap.timeline({
     scrollTrigger: {
       trigger: ".section_video",
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   stickyVideoSection.to(".video-wrap", { width: "100rem" })
 
-  let videoImageWrapAnimation = gsap.timeline({ 
+  let videoImageWrapAnimation = gsap.timeline({
     scrollTrigger: {
       trigger: '.section_video',
       scrub: true,
@@ -81,11 +81,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   })
 
-    videoImageWrapAnimation
-      .fromTo(".video_img-wrap.width-283", { x: "-70rem" }, { x: "15rem" }, "<")
-      .fromTo(".video_img-wrap.width-224", { x: "70rem" }, { x: "-15rem" }, "<")
-      .fromTo(".video_img-wrap.width-195", { y: "45rem" }, { y: "-15rem" }, "<")
-      .fromTo(".video_img-wrap.width-192", { y: "-45rem" }, { y: "15rem" }, "<") 
+  videoImageWrapAnimation
+    .fromTo(".video_img-wrap.width-283", { x: "-70rem" }, { x: "15rem" }, "<")
+    .fromTo(".video_img-wrap.width-224", { x: "70rem" }, { x: "-15rem" }, "<")
+    .fromTo(".video_img-wrap.width-195", { y: "45rem" }, { y: "-15rem" }, "<")
+    .fromTo(".video_img-wrap.width-192", { y: "-45rem" }, { y: "15rem" }, "<")
 
   gsap.set("[work-info]", { autoAlpha: 0 })
   gsap.set("[work-project-info]", { autoAlpha: 0 })
@@ -121,30 +121,30 @@ document.addEventListener("DOMContentLoaded", (event) => {
       "<"
     )
     .to(".work-3", { y: "0rem" })
-    .to('[cave]', {opacity: 0.99}, "<") 
-    .to('[cave]', {opacity: 0.6}, "<") 
-    .to('[num-project]', {text: "2"}, "<")
-    .to('[childhood]', {opacity: 1})
+    .to('[cave]', { opacity: 0.99 }, "<")
+    .to('[cave]', { opacity: 0.6 }, "<")
+    .to('[num-project]', { text: "2" }, "<")
+    .to('[childhood]', { opacity: 1 })
     .to(".work-4", { y: "0rem" })
-    .to('[childhood]', {opacity: 0.99}, "<")
-    .to('[childhood]', {opacity: 0.6}, "<")
-    .to('[num-project]', {text: "3"}, "<")
-    .to('[leopard]', {opacity: 1})
+    .to('[childhood]', { opacity: 0.99 }, "<")
+    .to('[childhood]', { opacity: 0.6 }, "<")
+    .to('[num-project]', { text: "3" }, "<")
+    .to('[leopard]', { opacity: 1 })
     .to(".work-5", { y: "0rem" })
-    .to('[leopard]', {opacity: 0.99}, "<")
-    .to('[leopard]', {opacity: 0.6}, "<")
-    .to('[num-project]', {text: "4"}, "<")
-    .to('[cornlady]', {opacity: 1})
+    .to('[leopard]', { opacity: 0.99 }, "<")
+    .to('[leopard]', { opacity: 0.6 }, "<")
+    .to('[num-project]', { text: "4" }, "<")
+    .to('[cornlady]', { opacity: 1 })
     .to(".work-6", { y: "0rem" })
-    .to('[cornlady]', {opacity: 0.99}, "<")
-    .to('[cornlady]', {opacity: 0.6}, "<")
-    .to('[num-project]', {text: "5"}, "<")
-    .to('[matilda]', {opacity: 1})
+    .to('[cornlady]', { opacity: 0.99 }, "<")
+    .to('[cornlady]', { opacity: 0.6 }, "<")
+    .to('[num-project]', { text: "5" }, "<")
+    .to('[matilda]', { opacity: 1 })
     .to(".work-7", { y: "0rem" })
-    .to('[matilda]', {opacity: 0.99}, "<")
-    .to('[matilda]', {opacity: 0.6}, "<")
-    .to('[num-project]', {text: "6"}, "<")
-    .to('[cat]', {opacity: 1})
+    .to('[matilda]', { opacity: 0.99 }, "<")
+    .to('[matilda]', { opacity: 0.6 }, "<")
+    .to('[num-project]', { text: "6" }, "<")
+    .to('[cat]', { opacity: 1 })
 
   let splitHeadings = new SplitText("[split-headings]", { type: "lines" })
 
@@ -173,15 +173,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
       ease: "none",
     })
     .totalProgress(0.5)
-    
+
   let tweenReverse = gsap
-    .to(".markquee-track.bottom", { 
+    .to(".markquee-track.bottom", {
       xPercent: 50,
       repeat: -1,
       duration: 40,
       ease: "none",
     })
-    .totalProgress(0.5)  
+    .totalProgress(0.5)
 
   window.addEventListener("scroll", function () {
     if (window.pageYOffset > currentScroll) {
@@ -193,12 +193,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     gsap.to(tween, {
       timeScale: isScrollingDown ? 1 : -1,
     })
-    
+
     gsap.to(tweenReverse, {
       timeScale: isScrollingDown ? 1 : -1,
     })
 
     currentScroll = window.pageYOffset
   })
-
 })
